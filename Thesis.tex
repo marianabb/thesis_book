@@ -9,9 +9,6 @@
 % Latest version available at:            
 %   http://ub.uu.se/thesistemplate            
 %                                         
-% Modified by Mariana Bustamante
-% mariana.bustamante.7840@student.uu.se
-%                   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -46,7 +43,10 @@
 	
 	% Enable scaling of images on import
 	\usepackage{graphicx}
+    \graphicspath{{./Images/}}
     \usepackage{hyperref}
+
+    \usepackage[usenames,dvipsnames]{xcolor}
     
 \fi
 
@@ -56,13 +56,21 @@
 \usepackage{tabularx}
 
 % Document links and bookmarks
+\usepackage{url}
 \usepackage{hyperref} 
+\hypersetup{
+  pdftitle={Detection and Quantification of Small Changes in MRI Volumes},    % title
+  pdfauthor={Mariana Bustamante},     % author
+  urlcolor=blue,   % color of external links
+  citecolor=OliveGreen, % color of links to bibliography
+}
+\usepackage{breakurl}
 
 % Numbering of headings down to the subsection level
 \numberingdepth{subsection}
 
-% Including headings down to the subsection level in contents
-\contentsdepth{subsection}
+% Including headings down to the sub(sub)section level in contents
+\contentsdepth{subsubsection}
 
 
 \title{Detection and Quantification of Small Changes in MRI Volumes}
