@@ -43,34 +43,36 @@
 	
 	% Enable scaling of images on import
 	\usepackage{graphicx}
-    \graphicspath{{./Images/}}
-    \usepackage{hyperref}
-
-    \usepackage[usenames,dvipsnames]{xcolor}
+    \graphicspath{{./Images/}} % Added by Mariana
     
 \fi
 
+\usepackage[usenames,dvipsnames]{xcolor} % Added by Mariana
+\usepackage{amsmath} % Added by Mariana
 
 % Tables
 \usepackage{booktabs}
 \usepackage{tabularx}
 
 % Document links and bookmarks
-\usepackage{url}
+\usepackage{url} % Added by Mariana
 \usepackage{hyperref} 
-\hypersetup{
+\hypersetup{ 
   pdftitle={Detection and Quantification of Small Changes in MRI Volumes},    % title
   pdfauthor={Mariana Bustamante},     % author
   urlcolor=blue,   % color of external links
   citecolor=OliveGreen, % color of links to bibliography
-}
-\usepackage{breakurl}
+} % Added by Mariana
+\usepackage{breakurl} % Added by Mariana
+
+\hyphenation{mor-phom-e-try} % Added by Mariana
+
 
 % Numbering of headings down to the subsection level
 \numberingdepth{subsection}
 
-% Including headings down to the sub(sub)section level in contents
-\contentsdepth{subsubsection}
+% Including headings down to the subsection level in contents
+\contentsdepth{subsubsection} % Added subsubsections by Mariana
 
 
 \title{Detection and Quantification of Small Changes in MRI Volumes}

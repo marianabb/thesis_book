@@ -135,9 +135,112 @@ development, aging, learning, disease and evolution. Its goal is to
 derive specific information from noninvasive neuroimaging data of live
 brains, typically obtained from magnetic resonance imaging (MRI); and
 to quantify the anatomical features of the brain in terms of shape,
-mass and volume \cite{brmorph}.
+mass and volume \cite{brmorph}.\\
 
-\subsection{Voxel-based Morphometry}
+In general, brain morphometry can be divided into three different methods: \textit{deformation-based}, \textit{tensor-based} and \textit{voxel-based} morphometry. Defined briefly as:
+\begin{itemize}
+\item \textit{Deformation-based:} Uses deformation fields to identify differences in the relative positions of structures.
+\item \textit{Tensor-based:} Uses deformation fields to identify differences in the local shape of brain structures.
+\item \textit{Voxel-based:} Uses voxel-wise comparison of the local concentration of grey matter.
+\end{itemize}
 
-\subsection{Tensor-based Morphometry}
-\subsection{Deformation-based Morphometry}
+
+\subsection{Morphometry methods used}
+Only \textit{tensor-based} and \textit{voxel-based} morphometry
+methods where used during this project, since their outputs were
+easier to adapt to our requirements.
+
+
+\subsubsection{Voxel-based Morphometry}
+A useful measure of structural difference among populations is derived
+from a comparison of the local composition of different brain tissue
+types (e.g., grey matter, white matter, etc). Voxel-based morphometry
+(VBM) has been designed to be sensitive to these differences, while
+discounting positional and other large scale volumetric differences in
+gross anatomy.
+
+Since its inception, VBM has become an established tool in morphometry
+being used to detect cortical atrophy and differences in slender white
+matter tracts \cite{ashburner}.\\
+
+An objection to VBM is that it is sensitive to systematic shape
+differences attributable to misregistration. Many potential
+differences can arise as a result of movement or different positioning
+of the subject in the scanner, and also there can be systematic
+differences in the relative intensity of grey matter voxels compared
+to white matter \cite{ashburner}.
+
+All these differences can be detected by VBM since they are all real
+differences among the data, even when they may not imply an increase
+or reduction in grey matter density.\\
+
+When VBM is used to compare MRI data of many different subjects, as is
+the case many times, the process involves spatially normalizing all
+the images to the same stereotactic space, extracting the gray matter
+from the normalized images, smoothing, and finally performing a
+statistical analysis to localize, and make inferences about, group
+differences. The output from the method is a statistical parametric
+map showing regions where gray matter concentration differs
+significantly between groups \cite{ashburner2}.\\
+
+
+For a detailed step-by-step description of VBM, please refer to
+\cite{ashburner2}.
+
+\subsubsection{Tensor-based Morphometry}
+The goal of tensor-based morphometry (TBM) is to determine regional
+shape differences. 
+
+A deformation field that maps one image to another can be considered a
+discrete vector field. By taking the gradients at each element of the
+field, a \textit{Jacobian matrix} field is obtained, in which each element is a
+tensor describing the relative positions of the neighboring
+elements. Morphometric measures derived from this tensor field can be
+used to locate regions with different shapes. The field obtained by
+taking the determinants at each point gives a map of the structure
+volumes relative to those of a reference image \cite{ashburner2}.\\
+
+In principle, the \textit{Jacobian matrices} of the deformations (a
+2nd order tensor field relating to the spatial derivatives of the
+transformation) should be more reliable indicators of brain shape than
+absolute deformations. Absolute deformations represent positions of
+brain structures, rather than local shape, and need to be quantified
+relative to some arbitrary reference position \cite{ashburner}.\\
+
+A \textit{Jacobian matrix} contains information about the local
+stretching, shearing and rotation involved in the deformation, and is
+defined at each point by:
+
+\[
+J = \begin{bmatrix}
+  \frac{\delta y_1}{\delta x_1} & \frac{\delta y_1}{\delta x_2} & \frac{\delta y_1}{\delta x_3} \\[0.3em]
+  \frac{\delta y_2}{\delta x_1} & \frac{\delta y_2}{\delta x_2} & \frac{\delta y_2}{\delta x_3} \\[0.3em]
+  \frac{\delta y_3}{\delta x_1} & \frac{\delta y_3}{\delta x_2} & \frac{\delta y_3}{\delta x_3}
+\end{bmatrix}
+\]\\
+
+The form of TBM that was used in this project involves comparing
+relative volumes of different brain structures, where the volumes are
+derived from \textit{Jacobian determinants} at each point. According
+to \cite{ashburner}, this type of morphometry is useful for studies
+that have specific questions about whether growth or volume loss has
+occurred, and so is appropriate for our problem.\\
+
+The \textit{Jacobian determinant} is the determinant of the
+\textit{Jacobian matrix} and is sometimes simply called ``the
+Jacobian''.
+
+For a differentiable function $f$ (a function whose derivative exists
+at each point in its domain), the \textit{Jacobian determinant} of
+$f$'s \textit{Jacobian matrix} at a given point gives important
+information about the behavior of $f$ near that point.
+
+For instance, if the \textit{Jacobian determinant} at a point $p$ is
+positive, then $f$ preserves orientation near $p$; if it is negative,
+$f$ reverses orientation. The absolute value of the \textit{Jacobian
+  determinant} at $p$ gives us the factor by which the function $f$
+expands or shrinks volumes near $p$ \cite{jacobian}.
+
+
+
+
