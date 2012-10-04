@@ -12,11 +12,11 @@ data sources like in image fusion, change detection, and multichannel
 image restoration.''\cite{zitova}\\
 
 
-The following images show a comparison of two volumes taken of the
-same patient at different times. Figure \ref{before_reg} shows the
-image comparison before performing affine registration. Figure
-\ref{after_reg} shows the comparison of images after the registration
-has been done.
+The following images show a checkerboard comparison of two volumes
+taken of the same patient at different times. Figure \ref{before_reg}
+shows the image comparison before performing affine
+registration. Figure \ref{after_reg} shows the comparison of images
+after the registration has been done.
 
 \begin{figure}[htb]
   \centering
@@ -46,6 +46,7 @@ According to \cite{zitova}, the majority of the registration methods consist of 
 
 
 \subsection{Registration Methods used}
+\label{sec:reg_methods}
 There are many different methods to accomplish registration between
 images or volumes. In this project only a few of these methods were
 used based on experiments performed with some of the available
@@ -146,6 +147,7 @@ In general, brain morphometry can be divided into three different methods: \text
 
 
 \subsection{Morphometry methods used}
+\label{sec:morph_methods}
 Only \textit{tensor-based} and \textit{voxel-based} morphometry
 methods where used during this project, since their outputs were
 easier to adapt to our requirements.
@@ -213,9 +215,9 @@ defined at each point by:
 
 \[
 J = \begin{bmatrix}
-  \frac{\delta y_1}{\delta x_1} & \frac{\delta y_1}{\delta x_2} & \frac{\delta y_1}{\delta x_3} \\[0.3em]
-  \frac{\delta y_2}{\delta x_1} & \frac{\delta y_2}{\delta x_2} & \frac{\delta y_2}{\delta x_3} \\[0.3em]
-  \frac{\delta y_3}{\delta x_1} & \frac{\delta y_3}{\delta x_2} & \frac{\delta y_3}{\delta x_3}
+  \frac{\partial y_1}{\partial x_1} & \frac{\partial y_1}{\partial x_2} & \frac{\partial y_1}{\partial x_3} \\[0.3em]
+  \frac{\partial y_2}{\partial x_1} & \frac{\partial y_2}{\partial x_2} & \frac{\partial y_2}{\partial x_3} \\[0.3em]
+  \frac{\partial y_3}{\partial x_1} & \frac{\partial y_3}{\partial x_2} & \frac{\partial y_3}{\partial x_3}
 \end{bmatrix}
 \]\\
 
