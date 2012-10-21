@@ -1,0 +1,59 @@
+\chapter{Discussion}
+This chapter contains an a analysis of the strenghts and weaknesses
+of each of the proposed methods based on the results obtained after
+several experiments with patient containing real and artificially
+added differences.
+
+\section{Voxel-based method}
+This method performs especially well in cases of volume loss, since
+this condition implies larger differences in intensity between both
+volumes. According to the experiments performed, the size of this
+differences can be really small and the method may still produce
+useful results.\\
+
+The method depends a lot on the registration results obtained in the
+second step. If the registration result is poor, the program will
+produce ``ghosts'' or false differences that may confuse the user.
+
+Note that a poor registration result might not necessarily be a direct
+consequence of the registration method chosen, it may also be due to
+problems with the volumes; for example, if the patient's position
+changes a lot from one volume to the next, or if the MRI machine has
+very distinct settings in each examination.\\
+
+Since in our specific case we deal with differences that are quite
+small, sometimes it is still hard to see them in the results;
+specially if we are looking at a screenshot of the application, rather
+than the actual application where we can see all of the frames in the
+volume.
+
+\section{Tensor-based method}
+This method has a lot of potential; since in theory, by using the
+deformation field resulting from the registration, we have all the
+information to be able to identify all the differences between the
+volumes.\\
+
+In spite of its potential, further analysis of the method results in
+the following challenges:
+\begin{enumerate}
+\item We need to generate a ``useful'' deformation field; which in
+  this case means a deformation field that is not too noisy, and from
+  which we can obtain real differences.
+\item We also need to figure out ``good values'' for the percentages
+  of growth and shrinkage that we are going to use for the final
+  result. This point is particularly complicated, since the
+  \textit{Jacobian determinant} values are usually not distributed in
+  the same way for different volumes.\\
+\end{enumerate}
+
+The module attempts to help the user find the right values by making
+the most relevant numbers interactive in the user interface. However,
+it is sometimes very hard to distinguish between actual differences
+and noise caused by a non smooth deformation field.\\
+
+Also, the \textit{Jacobian determinant} values are not regularly
+distributed around zero; this means that in most cases, the range of
+the values representing growth (located above zero), is much larger
+that the range of values that represent shrinkage (values below
+zero). As a consequence, the percentage of shrinkage is much more
+sensitive to small changes than the percentage of growth.

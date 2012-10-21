@@ -6,13 +6,33 @@
 
 \section{Future works}
 
-- Improve Tensor-based method.
+The tensor-based method needs to be improved in order to obtain more
+exact results, and for it to be able to detect smaller differences.
 
-- Figure out which values of the Jacobian are actually useful or use the Jacobian matrix.
+The first thing that should be done is either find a better way of
+figuring out which range of values of the \textit{Jacobian
+  determinant} are actually useful to detect differences, or directly
+using the \textit{Jacobian matrix} to calculate the changes in volume
+between the MRIs.
 
-- Both growth and shrinkage show always, sometimes unexpected, better differenciation? or just treat them as one?
+Manipulating the \textit{Jacobian matrix} is harder than using the
+\textit{Jacobian determinant} since, according to my research, there
+is no \textit{ITK} function or library already implemented to use
+it. Some theoretical pointers on how to use the matrix can be found in
+\cite{ashburner}.\\
 
-- Green is not sensitive enough, pink is VERY sensitive. Make if better somehow?
+The voxel-based method seems to work quite well in our experiments
+with both real and artificial differences between volumes. However, it
+would be very interesting to be able to compare its results against
+another tool with the same goals.\\
 
-- Make it public to Slicer people.
+We would like the modules to be available for all the users of
+\textit{3D Slicer} and for the public in general. To achieve this
+goal, a few specific conditions must be fulfilled in order for the
+module to be accepted as part of the \textit{3D Slicer} code.
+
+This would probably produce some criticism from the \textit{3D Slicer}
+developer community, which could contain useful comments on the
+current implementation of the modules and how to improve it.\\
+
 
