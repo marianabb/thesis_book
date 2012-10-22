@@ -1,7 +1,46 @@
 \chapter{Conclusions}
 
-- Just a suggestion of where the differences are, still needs human help.
+The goal of detecting and locating small differences between images
+and volumes presents a very interesting problem, not only limited to
+the medical field. It is still a big challenge today for which a
+complete solution is required.\\
 
+Even though in our specific case we deal with patients that have
+received mild trauma, it can still mean a lot for the quality of life
+of a person if he or she receives help when needed, and if the
+physician is able to locate the exact area affected by the injury.\\
+
+The applications presented in this project were created as modules of
+a bigger and already existent application called \textit{3D Slicer},
+which contains many other functionalities for medical image analysis
+and manipulation.
+
+In this way, the applications are not only given an interface that is
+easy to use, but also allow the user to utilize any of the
+other modules already present within \textit{3D Slicer}.\\
+
+The applications attempt to solve the problem for MRI volumes with two
+different techniques, both obtained from analysis of previous research
+done in the area.
+
+The results obtained with the voxel-based method are quite good, even
+when the artificial differences added where too small to be found with
+the naked eye. During this research, this method was successfully used
+in a medical study with real patients performed by the Uppsala
+University Hospital.
+
+The tensor-based method also produced useful results for differences
+of large and medium size. Even though the results were not as expected
+for smaller differences, the method could be the start for a very
+interesting future development possibly using the \textit{Jacobian
+  matrix}.\\
+
+Finally, it is important to highlight that the results of both methods
+as they are now, are just a suggestion of the size and location of the
+differences between the volumes; as a consequence, the procedure can
+not be completely automatic, since the applications still need some
+human help in order to define the differences more exactly and
+possibly rule out errors.
 
 
 \section{Future works}
