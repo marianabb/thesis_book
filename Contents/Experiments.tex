@@ -33,18 +33,17 @@ condition and its subsequent surgery.
 
 
 \section{Artificial Differences Results}
-
-\subsection{Size: Large}
-
-Initial baseline volume without modifications:
+The initial baseline volume without modifications used for all of the
+artificial tests can be seen in the following image:
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.3]{/experiment_bigger/biggerA.eps}
-  \caption{Large Differences: Baseline volume}
-  \label{largeA}
+  \caption{Artificial Differences: Baseline volume}
+  \label{artificial_base}
 \end{figure}
 
+\subsection{Size: Large}
 Cubes of large size where deleted from the follow-up volume to
 represent areas of volume loss. The following volume was obtained:
 
@@ -91,7 +90,7 @@ The parameters used to obtain this result are:
   \centering
   \includegraphics[scale=0.2]{/experiment_bigger/tensor80-65_bigger1.eps}
   \caption{Artificial Large: Tensor-base method}
-  \label{voxel_large1}
+  \label{tensor_large1}
 \end{figure}
 
 Another angle of the result:
@@ -100,24 +99,144 @@ Another angle of the result:
   \centering
   \includegraphics[scale=0.2]{/experiment_bigger/tensor80_65_bigger2.eps}
   \caption{Artificial Large: Tensor-base method}
-  \label{voxel_large2}
+  \label{tensor_large2}
 \end{figure}
 
 
 \subsection{Size: Medium}
+Cubes of medium size where deleted from the follow-up volume to
+represent areas of volume loss. The following volume was obtained:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{/experiment_medium/medB_subtracted.eps}
+  \caption{Medium Differences: Modified Follow-up volume}
+  \label{largeB}
+\end{figure}
+
 \subsubsection{Voxel-based Method}
+The result obtained with this method and medium differences is as good
+as with larger differences. All the deleted volume cubes are found and
+easy to see in the result.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.2]{/experiment_medium/med_voxel1.eps}
+  \caption{Artificial Medium: Voxel-base method}
+  \label{voxel_med1}
+\end{figure}
+
+Another angle of the result:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.2]{/experiment_medium/med_voxel2.eps}
+  \caption{Artificial Medium: Voxel-base method}
+  \label{voxel_med2}
+\end{figure}
 
 \subsubsection{Tensor-based Method}
+The result is a bit worse than for bigger differences. The volume
+losses are still found by the application, but their borders are not
+defined and the method also founds other zones with differences that
+are hard to differenciate from the added ones.
 
+The parameters used to obtain this result are:
+\begin{description}
+\item \textit{Deformation field smoothing sigma:} 2.5
+\item \textit{Shrinkage percentage:} 80
+\item \textit{Growth percentage:} 76
+\end{description}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.2]{/experiment_medium/tensor80-76_med1.eps}
+  \caption{Artificial Medium: Tensor-base method}
+  \label{tensor_med1}
+\end{figure}
+
+Another angle of the result:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.2]{/experiment_medium/tensor80-76_med2.eps}
+  \caption{Artificial Medium: Tensor-base method}
+  \label{tensor_med2}
+\end{figure}
 
 \subsection{Size: Small}
+Rectangles of very small size where deleted from the follow-up volume
+to represent areas of volume loss. Rectangles were selected instead of
+cubes in this case in order to be able to view the result more simply.
+
+The following volume was obtained. In this image, the small rectangles
+are marked in red just for the purpose of being more visible in this
+report. The original image does not include the red circles:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{/experiment_small/small_differences.eps}
+  \caption{Small Differences: Modified Follow-up volume}
+  \label{smallB}
+\end{figure}
+
 \subsubsection{Voxel-based Method}
+The result obtained with this method and small differences is also
+very good. All the deleted volume rectagles are found in the result,
+although in this case the differences are so small that could be hard
+to see, even when they are highlighted in the resulting volume.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.2]{/experiment_small/small_voxel1.eps}
+  \caption{Artificial Small: Voxel-base method}
+  \label{voxel_small1}
+\end{figure}
 
+Another angle of the result:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.2]{/experiment_small/small_voxel2.eps}
+  \caption{Artificial Small: Voxel-base method}
+  \label{voxel_small2}
+\end{figure}
 
 
 \subsubsection{Tensor-based Method}
+The result obtained is not very useful. It may be possible to find
+some of the differences since we know their position in this
+experiment. However, this would not be the case with real volumes as
+it would be impossible to discern between real differences and those
+produced by imperfections in the method.
 
+The parameters used to obtain this result are:
+\begin{description}
+\item \textit{Deformation field smoothing sigma:} 3.5
+\item \textit{Shrinkage percentage:} 70
+\item \textit{Growth percentage:} 80
+\end{description}
+
+Note that in this case the parameter for deformation field smoothing
+sigma is higher. This produced a smoother deformation field after the
+registration, which improved the results to some extent; even though
+the final result is still not good enough.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.2]{/experiment_small/tensor_70-80_small1.eps}
+  \caption{Artificial Small: Tensor-base method}
+  \label{tensor_small1}
+\end{figure}
+
+Another angle of the result:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.2]{/experiment_small/tensor_70-80_small2.eps}
+  \caption{Artificial Small: Tensor-base method}
+  \label{tensor_small2}
+\end{figure}
 
 \section{Real Differences Results}
 

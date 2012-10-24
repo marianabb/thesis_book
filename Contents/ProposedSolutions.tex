@@ -1,14 +1,57 @@
 \chapter{Proposed Solutions}
+During the course of this project two different methods where
+implemented, both taking into account previous works about morphometry
+and quantification of small changes in volumes.
+
+This chapter contains a description of all the elements used to
+develop the methods presented, and also the technical details
+necessary to understand them.
+
 
 \section{Tools used}
 \subsection{3D Slicer}
-\textbf{Slicer}, or \textbf{3D Slicer}, is a free, open source software package for visualization and image analysis. It is natively designed to be available on multiple platforms, including Windows, Linux and Mac Os X.
+\textbf{Slicer}, or \textbf{3D Slicer}, is a free, open source
+software package for visualization and image analysis. It is natively
+designed to be available on multiple platforms, including Windows,
+Linux and Mac Os X.
 
-3D Slicer provides image registration, processing of DTI (diffusion tractography), an interface to external devices for image guidance support, and GPU-enabled volume rendering, among other capabilities. 3D Slicer has a modular organization that allows the easy addition of new functionality and provides a number of generic features not available in competing tools.
+\textit{3D Slicer} was chosen among a series of other tools because of
+its type of architecture, which allows new developers to write new
+modules that can be included in the program with relative
+simplicity. Also, its code is open source, which allows the programmer
+to analyse any part of the code before implementing his own.
 
-3D Slicer is built on VTK, a pipeline-based graphical library that is widely used in scientific visualization. In version 4, the core application is implemented in C++, and the API is available through a Python wrapper to facilitate rapid, iterative development and visualization in the included Python console. The user interface is implemented in Qt, and may be extended using either C++ or Python.
+\cite{gimias} gives a list of other available software technologies, presented in the
+following table:
 
-Slicer supports several types of modular development. Fully interactive, custom interfaces may be written in C++ or Python. Command-line programs in any language may be wrapped using a light-weight XML specification, from which a graphical interface is automatically generated \cite{slicer}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{other_sw.eps}
+  \caption{List of current software projects focused on medical image
+    processing and end-user software for model personalization}
+  \label{other_sw}
+\end{figure}
+
+
+\textit{3D Slicer} provides image registration, processing of DTI
+(diffusion tractography), an interface to external devices for image
+guidance support, and GPU-enabled volume rendering, among other
+capabilities. 3D Slicer has a modular organization that allows the
+easy addition of new functionality and provides a number of generic
+features not available in competing tools.
+
+\textit{3D Slicer} is built on VTK, a pipeline-based graphical library
+that is widely used in scientific visualization. In version 4, the
+core application is implemented in C++, and the API is available
+through a Python wrapper to facilitate rapid, iterative development
+and visualization in the included Python console. The user interface
+is implemented in Qt, and may be extended using either C++ or Python.
+
+\textit{Slicer} supports several types of modular development. Fully
+interactive, custom interfaces may be written in C++ or
+Python. Command-line programs in any language may be wrapped using a
+light-weight XML specification, from which a graphical interface is
+automatically generated \cite{slicer}.
 
 For more information on this tool please refer to its official webpage: 
 
@@ -44,9 +87,13 @@ ParaView was used during this project to visualize the deformation fields produc
 Official website for this tool: \url{http://www.paraview.org/}
 
 \section{Implemented Methods}
-During the course of this project two different methods where
-implemented, both taking into account previous works about morphometry
-and quantification of small changes in volumes.
+Both methods are implemented as modules of \textit{3D Slicer} and
+their functionalities can be called in two ways: Through the user
+interface of \textit{3D Slicer}, or as a \textit{CLI} (Command Line
+Interface) from any other module implemented for \textit{3D Slicer}.
+
+This allows the modules to be usable even from a newly developed
+\textit{3D Slicer} module.
 
 \subsection{Voxel-based method}
 This method was implemented as a \textit{3D Slicer} module with the following steps:
@@ -149,7 +196,6 @@ The user interface of the module is written in \textit{Python} using
 some libraries from \textit{Qt} and \textit{CTK}, being
 \textit{ctkWorkflowWidgetStep} from \textit{CTK} the most important
 since it allows the creation of a ``step-by-step'' wizard.\\
-
 
 The part of the module in charge of the subtraction of volumes is
 written in \textit{C++} using \textit{ITK}.
