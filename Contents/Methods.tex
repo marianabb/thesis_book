@@ -119,15 +119,62 @@ registration please refer to the module webpage:
 \label{sec:demon_warp}
 As with the registration methods explained before, \textit{BRAINS
   Demon Warp} registration is implemented as a module in \textit{3D
-  Slicer} version
-4.1.\\
+  Slicer} version 4.1.\\
 
-The module works by using the ITK filter based on Thirion's Demons
-algorithm, in which the main idea is to consider the objects
-boundaries in one image as semi-permeable membranes and to let the
-other image, considered as a deformable grid model, diffuse through
-these interfaces, by the action of effectors situated within the
-membranes. \cite{thirion}.
+Before the registration takes place, there is an initial
+pre-processing step in which the intensity mismatch between the
+volumes is corrected by histogram matching. This prevents future
+errors in the registration, since a good result depends on the volumes
+intensities being similar.
+
+The method's implementation in \textit{3D Slicer} contains other
+interesting parameters that can be modified by the user. The ones that
+were found most useful for this research are:
+\begin{itemize}
+\item \textit{Displacement field smoothing sigma:} A gaussian
+  smoothing value to be applied to the deformation field at each
+  iteration.
+\item \textit{Update field smoothing:} Smoothing sigma for the update
+  field at each iteration.
+\end{itemize}
+
+Some resulting deformation fields exemplifying the changes produced by
+modifying this values can be seen next:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{demons/demons_1_DF.eps}
+  \caption{Displacement field smoothing sigma of 1.0 (default value)}
+  \label{df_1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{demons/demons_2-5_DF.eps}
+  \caption{Displacement field smoothing sigma of 2.5}
+  \label{df_2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{demons/demons_updatesig0.eps}
+  \caption{Update field smoothing of 0.0 (default)}
+  \label{uf_0}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{demons/demons_updatesig2.eps}
+  \caption{Update field smoothing of 2.0}
+  \label{uf_2}
+\end{figure}
+
+The actual registration step works by using the ITK filter based on
+\textit{Thirion's Demons algorithm}, in which the main idea is to
+consider the objects boundaries in one image as semi-permeable
+membranes and to let the other image, considered as a deformable grid
+model, diffuse through these interfaces, by the action of effectors
+situated within the membranes \cite{thirion}.
 
 An important characteristic of this implementation, that was
 particularly useful for this project, is that it can produce a
