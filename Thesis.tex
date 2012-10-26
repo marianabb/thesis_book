@@ -19,7 +19,7 @@
 
 \ifxetex
 	% XeTeX specific packages and settings
-	% Language, diacritics and hyphenation
+	% Language, diacritics and hyphenatio©©©
     \usepackage[babelshorthands]{polyglossia}
   	\setmainlanguage{english}
 	\setotherlanguages{swedish}
@@ -94,7 +94,52 @@
 
 \abstractdummy{
 	\begin{abstract}
-		Please use no more than 300 words and avoid mathematics or complex script.
+      The focus of this research is to attempt to solve the problem of
+      comparing two MRI brain volumes of the same subject taken at
+      different times, and detect the location and size of the
+      differences between them, especially when such differences are
+      too small to be perceived with the naked eye.
+
+      The research focuses on a combination of registration and
+      morphometry techniques already existent, in order to create two
+      different possible solutions: A voxel-based method and a
+      tensor-based method. The first method uses \textit{Affine} or
+      \textit{BSpline} registration combined with voxel-by-voxel
+      subtraction of the volumes; the second method uses
+      \textit{Demons} registration and analysis of the
+      \textit{Jacobian determinants} at each point of the deformation
+      field, obtained as a result from the registration. The methods
+      are implemented as modules for \textit{3D Slicer}, and already
+      existent software for medical image analysis and visualization.
+
+      Both methods are tested on two types of experiments:
+      Artificial experiments, in which made-up differences of
+      distinct sizes are added to volumes of healthy subjects; and
+      real experiments, in which MRIs of actual patients of the
+      Uppsala University Hospital are compared.
+
+      The results obtained from the voxel-based method are very
+      useful, since it was able to detect with almost complete
+      accuracy all of the artificial differences and expected real
+      differences during the experiments.
+
+      The tensor-based method's results are not as accurate in
+      location or size of the detected differences, and it usually
+      includes more areas of differences where there seems to be none;
+      even though it behaves adequately when the differences are
+      large.
+
+      From this research, it can be concluded that most of the results
+      obtained are useful for the diagnostic of real patients with
+      non-severe trauma to the head; especially when using the
+      voxel-based method. However, the results from both methods are
+      just a suggestion of the size and location of injuries; and as a
+      consequence, the procedure requires the presence of a medical
+      practitioner.
+      
+      It is recommended to continue the development of the
+      tensor-based method by using the \textit{Jacobian matrix}
+      instead or together with the \textit{Jacobian determinants}.
 	\end{abstract}
 }
 
@@ -109,7 +154,10 @@
     %\frontmatterMonograph 
  
    % Optional dedication
-   \dedication{Dedicated to all hard-working \\doctoral students at Uppsala University}
+    \dedication{ Dedicated to my family and friends in Venezuela,\\ 
+      and the group of new-found friends in Uppsala \\
+      who have been with me during the last two years.
+    }
  
     % Environment used to create a list of papers
     %\begin{listofpapers}
