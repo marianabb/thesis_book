@@ -14,10 +14,14 @@ For this experiments, the MRIs used belong to a healthy patient and
 the time difference between each exam is very short, so it is expected
 of them to have no changes.
 
-The methods were used on three distinct sizes of difference: large,
-medium and small. The considered sizes are based on the comparisons
-done with real patients and the sizes of the differences presented on
-those cases.
+First, the methods were used on three distinct sizes of differences:
+large, medium and small; each of which represents volume loss. The
+considered sizes are based on the comparisons done with real patients
+and the sizes of the differences presented on those cases.
+
+Finally, the last artificial experiment was done by increasing the size
+of a small area of the brain, in order to represent movement or change
+of size of an area inside the brain.
 
 
 \subsection{Real Differences}
@@ -34,7 +38,8 @@ condition and its subsequent surgery.
 
 \section{Artificial Differences Results}
 The initial baseline volume without modifications used for all of the
-artificial tests can be seen in the following image:
+artificial tests related to volume loss can be seen in the following
+image:
 
 \begin{figure}[H]
   \centering
@@ -238,6 +243,92 @@ Another angle of the result:
   \label{tensor_small2}
 \end{figure}
 
+\subsection{Size Increase of a Section}
+A squared area inside the patient's brain was stretched out using an
+image modification software, so that it seems that this area of the
+brain increased in size.
+
+The baseline volume without modifications can be seen in the following
+image:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{/experiment_zoom/base.eps}
+  \caption{Artificial Size increase: Baseline volume}
+  \label{zoom_base}
+\end{figure}
+
+The next image shows the follow-up volume with the modifications
+highlighted in red so that they might be easier to see:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.3]{/experiment_zoom/follow.eps}
+  \caption{Artificial Size increase: Follow-up volume}
+  \label{zoom_follow}
+\end{figure}
+
+
+\subsubsection{Voxel-based Method}
+The result obtained with this method is quite good, the brightest
+areas definitely correspond with the area of size increase. Even the
+squared shape of the area can be observed in the resulting volume.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.2]{/experiment_zoom/zoom_voxel1.eps}
+  \caption{Artificial Size increase: Voxel-based method}
+  \label{zoom_voxel1}
+\end{figure}
+
+Another angle of the result:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.2]{/experiment_zoom/zoom_voxel2.eps}
+  \caption{Artificial Size increase: Voxel-based method}
+  \label{zoom_voxel2}
+\end{figure}
+
+
+\subsubsection{Tensor-based Method}
+Even though it would make sense for the tensor-based method to produce
+better results in this test, the final label map is unable to show the
+differences added and it shows quite a large amount of noise detected
+as differences.
+
+During this specific case the value of the \textit{deformation field
+  smoothing sigma} makes a big difference in the final volume.  It
+seems that the added size increase only produces a very small change
+in the deformation field resulting from the registration; as a
+consequence, the deformation field obtained with a smoothing sigma of
+$2.5$ is too smooth and the differences we are looking for disappear.
+
+The following image shows this result with 70 and 90 as the
+percentages of shrinkage and growth respectively:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.2]{/experiment_zoom/zoom_tensor_DF2-5_70_90.eps}
+  \caption{Artificial Size increase: Tensor-based, Smoothing sigma of 2.5}
+  \label{zoom_tensor1}
+\end{figure}
+
+If the \textit{deformation field smoothing sigma} is decreased to
+$1.0$, the deformation field seems to retain some of the interesting
+information. But the result still has a lot of noise.
+
+The following image shows this result with 70 and 85 as the
+percentages of shrinkage and growth respectively:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.2]{/experiment_zoom/zoom_tensor_DF1_70_85.eps}
+  \caption{Artificial Size increase: Tensor-based, Smoothing sigma of 1.0}
+  \label{zoom_tensor2}
+\end{figure}
+
+
 \section{Real Differences Results}
 
 \subsection{Patient 1}
@@ -335,7 +426,7 @@ The registration method used was \textit{Affine registration}.
 
 
 \subsubsection{Tensor-based Method}
-The tensor-base method doesn't find the same differences in the corpus
+The tensor-based method doesn't find the same differences in the corpus
 callosum as the previous method. With the usual percentage values
 (from $70\%$ to $80\%$ for both growth and shrinkage), the method almost
 doesn't find any differences. 

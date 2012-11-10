@@ -110,7 +110,7 @@ The application divides the volumes into a grid of user-defined size
 in which each line is a B-spline that will be modified by the
 registration to create a transform that aligns the two volumes.\\
 
-If you would like to know more about this implementation of B-spline
+For more information about this implementation of B-spline
 registration please refer to the module webpage:
 
 \url{http://wiki.slicer.org/slicerWiki/index.php/Documentation/4.1/Modules/BSplineDeformableRegistration}
@@ -128,9 +128,18 @@ volumes is corrected by histogram matching. This prevents future
 errors in the registration, since a good result depends on the volumes
 intensities being similar.
 
-The method's implementation in \textit{3D Slicer} contains other
-interesting parameters that can be modified by the user. The ones that
-were found most useful for this research are:
+
+The actual registration step works by using the ITK filter based on
+\textit{Thirion's Demons algorithm}, in which the main idea is to
+consider the objects boundaries in one image as semi-permeable
+membranes and to let the other image, considered as a deformable grid
+model, diffuse through these interfaces, by the action of effectors
+situated within the membranes \cite{thirion}.
+
+
+The method's implementation in \textit{3D Slicer} contains many
+parameters that can be modified by the user. The ones that were found
+most useful for this research are:
 \begin{itemize}
 \item \textit{Displacement field smoothing sigma:} A gaussian
   smoothing value to be applied to the deformation field at each
@@ -138,6 +147,14 @@ were found most useful for this research are:
 \item \textit{Update field smoothing:} Smoothing sigma for the update
   field at each iteration.
 \end{itemize}
+
+This values are specially important since they define the difference
+between using elastic or fluid equations to calculate the
+registration. Elastic equations perform a regularization on the
+displacement field, whereas fluid equations perform it on the velocity
+field \cite{pennec}. The method uses Gaussian smoothing in both cases,
+which can be considered a rough, but fast and easy to compute
+simulation for the models.\\
 
 Some resulting deformation fields exemplifying the changes produced by
 modifying this values can be seen next:
@@ -170,13 +187,6 @@ modifying this values can be seen next:
   \label{uf_2}
 \end{figure}
 
-The actual registration step works by using the ITK filter based on
-\textit{Thirion's Demons algorithm}, in which the main idea is to
-consider the objects boundaries in one image as semi-permeable
-membranes and to let the other image, considered as a deformable grid
-model, diffuse through these interfaces, by the action of effectors
-situated within the membranes \cite{thirion}.
-
 An important characteristic of this implementation, that was
 particularly useful for this project, is that it can produce a
 \textit{deformation field} as the output of the registration. A
@@ -192,7 +202,7 @@ at that point in order to align the volumes.\\
 \end{figure}
 
 
-If you would like to know more about the implementation of
+For more information about the implementation of
 \textit{BRAINS Demon Warp} registration please refer to the module
 webpage:
 
